@@ -18,7 +18,7 @@ import os
 from peewee import *
 
 
-# make the database point to a seperate home directory for the specific OS
+# TODO: make the database point to a seperate home directory for the specific OS
 db = SqliteDatabase('diary.db')
 
 
@@ -110,8 +110,8 @@ def search_entries():
 
 def delete_entry(entry):
     """deletes a diary entry"""
-    # I makes the most sense to me to delete the entry while I am
-    # reading it in from the 'view_entry' method
+    # It makes the most sense to me to delete the entry while I am
+    # reading it in from the 'view_entry' method so here it is
     if input("Are you sure (y/n) : ").lower().strip() == 'y':
         entry.delete_instance()
         print("Entry was deleted!")
