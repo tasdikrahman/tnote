@@ -29,10 +29,25 @@ Fire it up! :volcano:
 
 This app was created in a timespan of 2 hours while learning to use peewee. So don't be shy to make some PR's here :smile:
 
+**NOTE**
+
+I am using **Sqlite** as the **db** and the **schema** of the database is like this
+
+```sql
+$ sqlite3 diary.db 
+-- Loading resources from /home/tasdik/.sqliterc
+
+SQLite version 3.8.6 2014-08-15 11:46:33
+Enter ".help" for usage hints.
+sqlite> .schema
+CREATE TABLE "diaryentry" ("id" INTEGER NOT NULL PRIMARY KEY, "content" TEXT NOT NULL, "timestamp" DATETIME NOT NULL);
+sqlite>
+```
+
 #### To-do
     
 - [ ] Add pip support
-- [ ] Encrypt the `.db` file using **Sqlcipher*
+- [ ] Encrypt the `.db` file using **Sqlcipher**
 - [ ] Add better UI using **urwid**
 - [ ] Add tags support for buttons
 - [ ] Add ability to search for notes using timestamp
