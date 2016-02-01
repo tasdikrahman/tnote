@@ -3,7 +3,7 @@
 # @Author: tasdik
 # @Date:   2016-01-29
 # @Email:  prodicus@outlook.com  Github username: @prodicus
-# @Last Modified by:   tasdik
+# @Last Modified by:   maxwellgerber
 # @Last Modified time: 2016-02-01
 # MIT License. You can find a copy of the License
 # @http://prodicus.mit-license.org
@@ -17,8 +17,6 @@ import os
 
 from peewee import *
 
-
-# TODO: make the database point to a seperate home directory for the specific OS
 path = os.environ['HOME'] + '/.tnote'
 db = SqliteDatabase(path + '/diary.db')
 
@@ -66,7 +64,7 @@ def add_entry():
     print("Enter your entry: (press ctrl+D when finished)")
     data = sys.stdin.read().strip()  # reads all the data entered from the user
     if data:    # if something was actually entered
-        if input("Save entry (y/n)").lower() != 'n':  # anything other than 'n'
+        if input("\nSave entry (y/n)").lower() != 'n':  # anything other than 'n'
             DiaryEntry.create(content=data)
             print("Saved successfully")
 
@@ -78,7 +76,11 @@ def view_entry(search_query=None):
     if search_query:
         entries = entries.where(DiaryEntry.content.contains(search_query))
 
-    for entry in entries:
+    entries = list(entries)
+    index = 0
+    size = len(entries)-1
+    while 1:
+        entry = entries[index]
         timestamp = entry.timestamp.strftime("%A %B %d, %Y %I:%M%p ")
         clear()
         """A: weekeday name
@@ -94,14 +96,24 @@ def view_entry(search_query=None):
         print(entry.content)
         print('\n\n'+'='*len(timestamp))
         print('n) next entry')
+        print('p) previous entry')
         print('d) delete entry')
         print('q) to return to main menu')
 
-        next_action = input('Action: [n/q/d] : ').lower().strip()
+        next_action = input('Action: [n/p/q/d] : ').lower().strip()
         if next_action == 'q':
             break
         elif next_action == 'd':
             delete_entry(entry)
+            size -= 1
+        elif next_action == 'n':
+            index += 1
+            if(index > size):
+                index = size
+        elif next_action == 'p':
+            index -= 1
+            if(index < 0):
+                index = 0
 
 
 def search_entries():
