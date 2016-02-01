@@ -41,6 +41,14 @@ SQLite version 3.8.6 2014-08-15 11:46:33
 Enter ".help" for usage hints.
 sqlite> .schema
 CREATE TABLE "diaryentry" ("id" INTEGER NOT NULL PRIMARY KEY, "content" TEXT NOT NULL, "timestamp" DATETIME NOT NULL);
+sqlite> .tables
+diaryentry
+sqlite> pragma table_info([diaryentry]);
+cid         name        type        notnull     dflt_value  pk        
+----------  ----------  ----------  ----------  ----------  ----------
+0           id          INTEGER     1                       1         
+1           content     TEXT        1                       0         
+2           timestamp   DATETIME    1                       0         
 sqlite>
 ```
 
