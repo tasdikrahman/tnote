@@ -19,8 +19,8 @@ from peewee import *
 
 
 # TODO: make the database point to a seperate home directory for the specific OS
-db = SqliteDatabase('diary.db')
-
+path = os.environ['HOME'] + '/.tnote'
+db = SqliteDatabase(path + '/diary.db')
 
 class DiaryEntry(Model):
 
@@ -34,6 +34,7 @@ class DiaryEntry(Model):
 
 def initialize():
     """Create the table and the database if they don't exist till now"""
+    os.makedirs(path, exist_ok=True)
     db.connect()
     db.create_tables([DiaryEntry], safe=True)
 
