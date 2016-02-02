@@ -3,13 +3,14 @@
 # @Author: tasdik
 # @Date:   2016-01-29
 # @Email:  prodicus@outlook.com  Github username: @prodicus
-# @Last Modified by:   maxwellgerber
-# @Last Modified time: 2016-02-01
+# @Last Modified by:   tasdik
+# @Last Modified time: 2016-02-02
 # MIT License. You can find a copy of the License
 # @http://prodicus.mit-license.org
 
 # Follows a CRUD approach
 
+from __future__ import print_function
 from collections import OrderedDict
 import sys
 import datetime
@@ -17,12 +18,19 @@ import os
 
 from peewee import *
 
-path = os.environ['HOME'] + '/.tnote'
+
+try:
+    input = raw_input   # for python2 compatibility
+except NameError:
+    pass
+
+path = os.getenv('HOME', os.path.expanduser('~')) + '/.tnote'
 db = SqliteDatabase(path + '/diary.db')
 
 class DiaryEntry(Model):
 
     """The main Diray Model"""
+    title = CharField()
     content = TextField()
     timestamp = DateTimeField(default=datetime.datetime.now)
     tags = CharField()
@@ -33,7 +41,12 @@ class DiaryEntry(Model):
 
 def initialize():
     """Create the table and the database if they don't exist till now"""
-    os.makedirs(path, exist_ok=True)
+    # os.makedirs(path, exist_ok=True)
+    ## ^^ exist_ok is not there in python2 
+    ## ref: http://stackoverflow.com/a/5032238/3834059
+
+    if not os.path.exists(path):
+       os.makedirs(path)
     db.connect()
     db.create_tables([DiaryEntry], safe=True)
 
@@ -62,15 +75,29 @@ def clear():
 
 def add_entry():
     """Adds an entry to the diary"""
-    print("Enter your entry: (press ctrl+D when finished)")
-    data = sys.stdin.read().strip()  # reads all the data entered from the user
-    if data:    # if something was actually entered
-        print("\nEnter comma separated tags: (press ctrl+D when finished)")
-        tags = sys.stdin.read().strip()
-        if input("\nSave entry (y/n)").lower() != 'n':  # anything other than 'n'
-            DiaryEntry.create(content=data, tags=tags)
-            print("Saved successfully")
-
+    title_string = "Title (press ctrl+D when finished)"
+    print(title_string)
+    print("="*len(title_string))
+    title = sys.stdin.read().strip()
+    if title:
+        entry_string = "\nEnter your entry: (press ctrl+D when finished)"
+        print(entry_string)
+        print("="*len(entry_string))
+        data = sys.stdin.read().strip()  # reads all the data entered from the user
+        if data:    # if something was actually entered
+            print("="*len(entry_string))
+            print("\nEnter comma separated tags(if any!): (press ctrl+D when finished)")
+            print("Tags: ", end="")
+            tags = sys.stdin.read().strip()
+            print("="*len(entry_string))
+            if input("\nSave entry (y/n) : ").lower() != 'n':  # anything other than 'n'
+                DiaryEntry.create(content=data, tags=tags, title=title)
+                print("Saved successfully")
+    else:
+        print("No title entered! Press Enter to return to main menu")
+        input()
+        clear()
+        return
 
 def view_entry(search_query=None, search_content=True):
     """Views a diary entry"""
@@ -102,11 +129,12 @@ def view_entry(search_query=None, search_content=True):
         M: minute
         p: am or pm
         """
-        print(timestamp)
-        print('='*len(timestamp))
+        head = "{title} @ \"{timestamp}\"".format(title=entry.title, timestamp=entry.timestamp)
+        print(head)
+        print('='*len(head))
         print(entry.content)
         print(('\nTags:' + entry.tags) if entry.tags else '\nNo tags supplied')
-        print('\n\n'+'='*len(timestamp))
+        print('\n\n'+'='*len(head))
         print('n) next entry')
         print('p) previous entry')
         print('d) delete entry')
@@ -137,7 +165,7 @@ def search_entries():
         print("t) Tags")
         print("q) Return to the main menu")
         print("===============================")
-        print("Action [c/t/q]: ", end="")
+        print("Action [c/t/q] : ", end="")
         query_selector = input("").lower()
         if query_selector == "t":
             view_entry(input("Enter a search Query: "), search_content=False)
@@ -156,7 +184,7 @@ def delete_entry(entry):
     """deletes a diary entry"""
     # It makes the most sense to me to delete the entry while I am
     # reading it in from the 'view_entry' method so here it is
-    if input("Are you sure (y/n) : ").lower().strip() == 'y':
+    if input("Are you sure (y/n) : ", end="").lower().strip() == 'y':
         entry.delete_instance()
         print("Entry was deleted!")
 
