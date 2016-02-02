@@ -58,7 +58,20 @@ def menu_loop():
     choice = None
     while choice != 'q':
         clear()
-        puts(colored.yellow('*'*20))
+        tnote_banner = r"""
+        _________ _        _______ _________ _______ 
+        \__   __/( (    /|(  ___  )\__   __/(  ____ \
+           ) (   |  \  ( || (   ) |   ) (   | (    \/
+           | |   |   \ | || |   | |   | |   | (__    
+           | |   | (\ \) || |   | |   | |   |  __)   
+           | |   | | \   || |   | |   | |   | (      
+           | |   | )  \  || (___) |   | |   | (____/\
+           )_(   |/    )_)(_______)   )_(   (_______/
+            
+                                        - By prodicus(@tasdikrahman)
+                                 
+        """
+        puts(colored.yellow(tnote_banner))
         puts(colored.red("\nEnter 'q' to quit"))
         for key, value in menu.items():
             puts(colored.green('{}) {} : '.format(key, value.__doc__)))
@@ -196,8 +209,7 @@ def delete_entry(entry):
 menu = OrderedDict([
     ('a', add_entry),
     ('v', view_entry),
-    ('s', search_entries), 
-    ('d', delete_entry)
+    ('s', search_entries)
 ])
 
 if __name__ == "__main__":
