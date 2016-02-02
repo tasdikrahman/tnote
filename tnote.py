@@ -4,7 +4,7 @@
 # @Date:   2016-01-29
 # @Email:  prodicus@outlook.com  Github username: @prodicus
 # @Last Modified by:   tasdik
-# @Last Modified time: 2016-02-02
+# @Last Modified time: 2016-02-03
 # MIT License. You can find a copy of the License
 # @http://prodicus.mit-license.org
 
@@ -17,6 +17,7 @@ import datetime
 import os
 
 from peewee import *
+from clint.textui import colored, puts
 
 
 try:
@@ -57,10 +58,10 @@ def menu_loop():
     choice = None
     while choice != 'q':
         clear()
-        print('*'*20)
-        print("\nEnter 'q' to quit")
+        puts(colored.yellow('*'*20))
+        puts(colored.red("\nEnter 'q' to quit"))
         for key, value in menu.items():
-            print('{}) {} : '.format(key, value.__doc__))
+            puts(colored.green('{}) {} : '.format(key, value.__doc__)))
         choice = input('Action : ').lower().strip()
 
         if choice in menu:
@@ -76,24 +77,25 @@ def clear():
 def add_entry():
     """Adds an entry to the diary"""
     title_string = "Title (press ctrl+D when finished)"
-    print(title_string)
-    print("="*len(title_string))
+    # print(title_string)
+    puts(colored.yellow(title_string))
+    puts(colored.green("="*len(title_string)))
     title = sys.stdin.read().strip()
     if title:
         entry_string = "\nEnter your entry: (press ctrl+D when finished)"
-        print(entry_string)
-        print("="*len(entry_string))
+        puts(colored.yellow(entry_string))
+        puts(colored.green("="*len(entry_string)))
         data = sys.stdin.read().strip()  # reads all the data entered from the user
         if data:    # if something was actually entered
-            print("\nEnter comma separated tags(if any!): (press ctrl+D when finished)")
-            print("Tags: ", end="")
+            puts(colored.yellow("\nEnter comma separated tags(if any!): (press ctrl+D when finished) : "))
+            puts(colored.green("="*(len(title_string)+33)))
             tags = sys.stdin.read().strip()
-            print("="*len(entry_string))
+            puts(colored.green("="*len(entry_string)))
             if input("\nSave entry (y/n) : ").lower() != 'n':  # anything other than 'n'
                 DiaryEntry.create(content=data, tags=tags, title=title)
-                print("Saved successfully")
+                puts(colored.green("Saved successfully"))
     else:
-        print("No title entered! Press Enter to return to main menu")
+        puts(colored.red("No title entered! Press Enter to return to main menu"))
         input()
         clear()
         return
@@ -109,7 +111,7 @@ def view_entry(search_query=None, search_content=True):
 
     entries = list(entries)
     if len(entries) == 0:
-        print("\nYour search had no results. Press enter to return to the main menu!")
+        puts(colored.red("\nYour search had no results. Press enter to return to the main menu!"))
         input()
         clear()
         return
@@ -128,12 +130,12 @@ def view_entry(search_query=None, search_content=True):
         M: minute
         p: am or pm
         """
-        head = "{title} @ \"{timestamp}\"".format(title=entry.title, timestamp=entry.timestamp)
-        print(head)
-        print('='*len(head))
-        print(entry.content)
-        print(('\nTags:' + entry.tags) if entry.tags else '\nNo tags supplied')
-        print('\n\n'+'='*len(head))
+        head = "\"{title}\" on \"{timestamp}\"".format(title=entry.title, timestamp=entry.timestamp)
+        puts(colored.red(head))
+        puts(colored.green('='*len(head)))
+        puts(colored.yellow(entry.content))
+        puts(colored.magenta(('\nTags:' + entry.tags) if entry.tags else '\nNo tags supplied'))
+        puts(colored.green('\n\n'+'='*len(head)))
         print('n) next entry')
         print('p) previous entry')
         print('d) delete entry')
@@ -160,10 +162,10 @@ def search_entries():
     while 1:
         clear()
         print("What do you want to search for?")
-        print("c) Content")
-        print("t) Tags")
-        print("q) Return to the main menu")
-        print("===============================")
+        puts(colored.green("c) Content"))
+        puts(colored.green("t) Tags"))
+        puts(colored.green("q) Return to the main menu"))
+        puts(colored.yellow("==============================="))
         print("Action [c/t/q] : ", end="")
         query_selector = input("").lower()
         if query_selector == "t":
@@ -185,7 +187,7 @@ def delete_entry(entry):
     # reading it in from the 'view_entry' method so here it is
     if input("Are you sure (y/n) : ", end="").lower().strip() == 'y':
         entry.delete_instance()
-        print("Entry was deleted!")
+        puts(colored.green("Entry was deleted!"))
 
 
 menu = OrderedDict([

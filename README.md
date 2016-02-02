@@ -1,6 +1,6 @@
 ## tnote
 
-[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://img.shields.io/github/license/mashape/apistatus.svg) [![Supported python versions](https://img.shields.io/pypi/pyversions/Django.svg)]([![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)]()) [![Requirements Status](https://requires.io/github/prodicus/tnote/requirements.svg?branch=master)](https://requires.io/github/prodicus/tnote/requirements/?branch=master)
+[![GitHub license](https://img.shields.io/pypi/l/pyzipcode-cli.svg)](https://img.shields.io/pypi/l/pyzipcode-cli.svg) [![Supported python versions](https://img.shields.io/pypi/pyversions/Django.svg)]([![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)]()) [![Requirements Status](https://requires.io/github/prodicus/tnote/requirements.svg?branch=master)](https://requires.io/github/prodicus/tnote/requirements/?branch=master)
 
 A dead simple command line note taking app for you, built while learning [peewee (ORM)](https://github.com/coleifer/peewee)
 
@@ -58,6 +58,7 @@ sqlite>
 
 #### To-do
     
+- [x] Add python2 support
 - [x] Add tags support for notes
 - [x] Add option to add title for notes
 - [x] Add option to search for notes using content
@@ -66,7 +67,7 @@ sqlite>
 - [ ] Add option to search for notes using timestamp
 - [ ] Make it pip installable
 - [ ] Encrypt the `.db` file using **Sqlcipher**
-- [ ] Add colorized text to the notes for improved UI
+- [x] Add colorized text to the notes for improved UI
 - [ ] Add better UI using **urwid**
 
 #### Contributers
