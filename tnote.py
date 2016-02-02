@@ -147,6 +147,7 @@ def view_entry(search_query=None, search_content=True):
         elif next_action == 'd':
             delete_entry(entry)
             size -= 1
+            return
         elif next_action == 'n':
             index += 1
             if(index > size):
@@ -185,7 +186,8 @@ def delete_entry(entry):
     """deletes a diary entry"""
     # It makes the most sense to me to delete the entry while I am
     # reading it in from the 'view_entry' method so here it is
-    if input("Are you sure (y/n) : ", end="").lower().strip() == 'y':
+    puts(colored.red("Are you sure (y/n) : "))
+    if input().lower().strip() == 'y':
         entry.delete_instance()
         puts(colored.green("Entry was deleted!"))
 
@@ -193,7 +195,8 @@ def delete_entry(entry):
 menu = OrderedDict([
     ('a', add_entry),
     ('v', view_entry),
-    ('s', search_entries)
+    ('s', search_entries), 
+    ('d', delete_entry)
 ])
 
 if __name__ == "__main__":
