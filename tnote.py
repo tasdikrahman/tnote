@@ -76,18 +76,19 @@ def clear():
 
 def add_entry():
     """Adds an entry to the diary"""
-    title_string = "Title (press ctrl+D when finished)"
+    finish_key = "ctrl+Z" if os.name == 'nt' else "ctrl+D"
+    title_string = "Title (press %s when finished)" % finish_key
     # print(title_string)
     puts(colored.yellow(title_string))
     puts(colored.green("="*len(title_string)))
     title = sys.stdin.read().strip()
     if title:
-        entry_string = "\nEnter your entry: (press ctrl+D when finished)"
+        entry_string = "\nEnter your entry: (press %s when finished)" % finish_key
         puts(colored.yellow(entry_string))
         puts(colored.green("="*len(entry_string)))
         data = sys.stdin.read().strip()  # reads all the data entered from the user
         if data:    # if something was actually entered
-            puts(colored.yellow("\nEnter comma separated tags(if any!): (press ctrl+D when finished) : "))
+            puts(colored.yellow("\nEnter comma separated tags(if any!): (press %s when finished) : " % finish_key))
             puts(colored.green("="*(len(title_string)+33)))
             tags = sys.stdin.read().strip()
             puts(colored.green("="*len(entry_string)))
