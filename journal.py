@@ -9,7 +9,8 @@
 # @http://prodicus.mit-license.org
 
 # Follows a CRUD approach
-
+from __future__ import print_function
+from builtins import input
 from collections import OrderedDict
 import sys
 import datetime
@@ -17,7 +18,7 @@ import os
 
 from peewee import *
 
-path = os.environ['HOME'] + '/.tnote'
+path = os.getenv('HOME', os.path.expanduser('~')) + '/.tnote'
 db = SqliteDatabase(path + '/diary.db')
 
 class DiaryEntry(Model):
@@ -32,7 +33,8 @@ class DiaryEntry(Model):
 
 def initialize():
     """Create the table and the database if they don't exist till now"""
-    os.makedirs(path, exist_ok=True)
+    if not os.path.exists(path):
+        os.makedirs(path)
     db.connect()
     db.create_tables([DiaryEntry], safe=True)
 
@@ -61,8 +63,11 @@ def clear():
 
 def add_entry():
     """Adds an entry to the diary"""
-    print("Enter your entry: (press ctrl+D when finished)")
-    data = sys.stdin.read().strip()  # reads all the data entered from the user
+    if os.name=='nt':
+        print("Enter your entry: (press ctrl+Z <Return> when finished)")
+    else:
+        print("Enter your entry: (press ctrl+D when finished)")
+    data = sys.stdin.read().strip() # reads all the data entered from the user
     if data:    # if something was actually entered
         if input("\nSave entry (y/n)").lower() != 'n':  # anything other than 'n'
             DiaryEntry.create(content=data)
@@ -80,21 +85,27 @@ def view_entry(search_query=None):
     index = 0
     size = len(entries)-1
     while 1:
-        entry = entries[index]
-        timestamp = entry.timestamp.strftime("%A %B %d, %Y %I:%M%p ")
-        clear()
-        """A: weekeday name
-        B: month name
-        D: day number
-        Y: year
-        I: hour(12hr clock)
-        M: minute
-        p: am or pm
-        """
-        print(timestamp)
-        print('='*len(timestamp))
-        print(entry.content)
-        print('\n\n'+'='*len(timestamp))
+        if(len(entries) > 0):
+            entry = entries[index]
+            timestamp = entry.timestamp.strftime("%A %B %d, %Y %I:%M%p ")
+            clear()
+            """A: weekeday name
+            B: month name
+            D: day number
+            Y: year
+            I: hour(12hr clock)
+            M: minute
+            p: am or pm
+            """
+            print(timestamp)
+            print('='*len(timestamp))
+            print(entry.content)
+            print('\n\n'+'='*len(timestamp))
+        else:
+            no_notes = 'You have no notes.'
+            print('='*len(no_notes))
+            print(no_notes)
+            print('\n\n'+'='*len(no_notes))
         print('n) next entry')
         print('p) previous entry')
         print('d) delete entry')
