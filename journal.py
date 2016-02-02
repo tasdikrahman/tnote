@@ -75,17 +75,19 @@ def clear():
 
 def add_entry():
     """Adds an entry to the diary"""
-    title_string = "Title (press ctrl+D when finished)"
+    finish_key = "ctrl+Z" if os.name=='nt' else "ctrl+D"
+    title_string = "Title (press %s when finished)" % finish_key
     print(title_string)
     print("="*len(title_string))
     title = sys.stdin.read().strip()
     if title:
-        entry_string = "\nEnter your entry: (press ctrl+D when finished)"
+        entry_string = "\nEnter your entry: (press %s when finished)" % finish_key
         print(entry_string)
         print("="*len(entry_string))
         data = sys.stdin.read().strip()  # reads all the data entered from the user
         if data:    # if something was actually entered
-            print("\nEnter comma separated tags(if any!): (press ctrl+D when finished)")
+            print ("KEY", finish_key)
+            print("\nEnter comma separated tags(if any!): (press %s when finished)" % finish_key)
             print("Tags: ", end="")
             tags = sys.stdin.read().strip()
             print("="*len(entry_string))
@@ -103,21 +105,22 @@ def view_entry(search_query=None, search_content=True):
     entries = DiaryEntry.select().order_by(DiaryEntry.timestamp.desc())
 
     if search_query and search_content:
-        entries = entries.where(DiaryEntry.content.contains(search_query))
+        results = list(entries.where(DiaryEntry.content.contains(search_query)))
     elif search_query and not search_content:
-        entries = entries.where(DiaryEntry.tags.contains(search_query))
+        results = list(entries.where(DiaryEntry.title.contains(search_query))) + list(entries.where(DiaryEntry.tags.contains(search_query)))
+    else:
+    	results = list(entries)
 
-    entries = list(entries)
-    if len(entries) == 0:
+    if len(results) == 0:
         print("\nYour search had no results. Press enter to return to the main menu!")
         input()
         clear()
         return
 
     index = 0
-    size = len(entries)-1
+    size = len(results)-1
     while 1:
-        entry = entries[index]
+        entry = results[index]
         timestamp = entry.timestamp.strftime("%A %B %d, %Y %I:%M%p ")
         clear()
         """A: weekeday name
@@ -161,7 +164,7 @@ def search_entries():
         clear()
         print("What do you want to search for?")
         print("c) Content")
-        print("t) Tags")
+        print("t) Title and Tags")
         print("q) Return to the main menu")
         print("===============================")
         print("Action [c/t/q] : ", end="")
