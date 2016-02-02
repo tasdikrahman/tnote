@@ -85,7 +85,6 @@ def add_entry():
         print("="*len(entry_string))
         data = sys.stdin.read().strip()  # reads all the data entered from the user
         if data:    # if something was actually entered
-            print("="*len(entry_string))
             print("\nEnter comma separated tags(if any!): (press ctrl+D when finished)")
             print("Tags: ", end="")
             tags = sys.stdin.read().strip()

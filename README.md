@@ -1,5 +1,7 @@
 ## tnote
 
+[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://img.shields.io/github/license/mashape/apistatus.svg) [![Supported python versions](https://img.shields.io/pypi/pyversions/Django.svg)]([![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)]()) [![Requirements Status](https://requires.io/github/prodicus/tnote/requirements.svg?branch=master)](https://requires.io/github/prodicus/tnote/requirements/?branch=master)
+
 A dead simple command line note taking app for you, built while learning [peewee (ORM)](https://github.com/coleifer/peewee)
 
 ## Demo
@@ -40,25 +42,39 @@ $ sqlite3 diary.db
 SQLite version 3.8.6 2014-08-15 11:46:33
 Enter ".help" for usage hints.
 sqlite> .schema
-CREATE TABLE "diaryentry" ("id" INTEGER NOT NULL PRIMARY KEY, "content" TEXT NOT NULL, "timestamp" DATETIME NOT NULL);
+CREATE TABLE "diaryentry" ("id" INTEGER NOT NULL PRIMARY KEY, "title" VARCHAR(255) NOT NULL, "content" TEXT NOT NULL, "timestamp" DATETIME NOT NULL, "tags" VARCHAR(255) NOT NULL);
 sqlite> .tables
 diaryentry
 sqlite> pragma table_info([diaryentry]);
 cid         name        type        notnull     dflt_value  pk        
 ----------  ----------  ----------  ----------  ----------  ----------
 0           id          INTEGER     1                       1         
-1           content     TEXT        1                       0         
-2           timestamp   DATETIME    1                       0         
+1           title       VARCHAR(25  1                       0         
+2           content     TEXT        1                       0         
+3           timestamp   DATETIME    1                       0         
+4           tags        VARCHAR(25  1                       0 
 sqlite>
 ```
 
 #### To-do
     
-- [ ] Add pip support
+- [x] Add tags support for notes
+- [x] Add option to add title for notes
+- [x] Add option to search for notes using content
+- [x] Add option to search for notes using tags
+- [ ] Add option to search for notes using title
+- [ ] Add option to search for notes using timestamp
+- [ ] Make it pip installable
 - [ ] Encrypt the `.db` file using **Sqlcipher**
+- [ ] Add colorized text to the notes for improved UI
 - [ ] Add better UI using **urwid**
-- [ ] Add tags support for notes
-- [ ] Add ability to search for notes using timestamp
+
+#### Contributers
+
+A big shout out to all the contributers, more specifically to these guys
+
+- [@maxwellgerber](https://github.com/maxwellgerber)
+- [@BrandtM](https://github.com/BrandtM)
 
 ## Issues
 
