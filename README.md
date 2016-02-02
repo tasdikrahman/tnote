@@ -1,9 +1,22 @@
-## tnote
+<p align="center">
+<h1>tnote</h1>
 
-[![GitHub license](https://img.shields.io/pypi/l/pyzipcode-cli.svg)](https://img.shields.io/pypi/l/pyzipcode-cli.svg) [![Supported python versions](https://img.shields.io/pypi/pyversions/Django.svg)]([![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)]()) [![Requirements Status](https://requires.io/github/prodicus/tnote/requirements.svg?branch=master)](https://requires.io/github/prodicus/tnote/requirements/?branch=master)
+<p>[![GitHub license](https://img.shields.io/pypi/l/pyzipcode-cli.svg)](https://img.shields.io/pypi/l/pyzipcode-cli.svg) [![Supported python versions](https://img.shields.io/pypi/pyversions/Django.svg)]([![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)]()) [![Requirements Status](https://requires.io/github/prodicus/tnote/requirements.svg?branch=master)](https://requires.io/github/prodicus/tnote/requirements/?branch=master)</p>
 
-A dead simple command line note taking app for you, built while learning [peewee (ORM)](https://github.com/coleifer/peewee)
+<p>
+_________ _        _______ _________ _______ 
+\__   __/( (    /|(  ___  )\__   __/(  ____ \
+   ) (   |  \  ( || (   ) |   ) (   | (    \/
+   | |   |   \ | || |   | |   | |   | (__    
+   | |   | (\ \) || |   | |   | |   |  __)   
+   | |   | | \   || |   | |   | |   | (      
+   | |   | )  \  || (___) |   | |   | (____/\
+   )_(   |/    )_)(_______)   )_(   (_______/
+</p>
 
+<br><br>A dead simple command line note taking app for you, built while learning [peewee (ORM)](https://github.com/coleifer/peewee)
+
+</p>
 ## Demo
 
 Watch a live demo of it working here
