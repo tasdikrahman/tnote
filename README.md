@@ -1,6 +1,6 @@
 ## tnote
 
-A dead simple command line note taking app for you built while learning [peewee (ORM)](https://github.com/coleifer/peewee)
+A dead simple command line note taking app for you, built while learning [peewee (ORM)](https://github.com/coleifer/peewee)
 
 ## Demo
 
@@ -57,7 +57,7 @@ sqlite>
 - [ ] Add pip support
 - [ ] Encrypt the `.db` file using **Sqlcipher**
 - [ ] Add better UI using **urwid**
-- [ ] Add tags support for buttons
+- [ ] Add tags support for notes
 - [ ] Add ability to search for notes using timestamp
 
 ## Issues
