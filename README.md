@@ -3,14 +3,14 @@
 [![GitHub license](https://img.shields.io/pypi/l/pyzipcode-cli.svg)](https://img.shields.io/pypi/l/pyzipcode-cli.svg) [![Supported python versions](https://img.shields.io/pypi/pyversions/Django.svg)]([![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)]()) [![Requirements Status](https://requires.io/github/prodicus/tnote/requirements.svg?branch=master)](https://requires.io/github/prodicus/tnote/requirements/?branch=master)
 
 ```
-_________ _        _______ _________ _______ 
-\__   __/( (    /|(  ___  )\__   __/(  ____ \
-   ) (   |  \  ( || (   ) |   ) (   | (    \/
-   | |   |   \ | || |   | |   | |   | (__    
-   | |   | (\ \) || |   | |   | |   |  __)   
-   | |   | | \   || |   | |   | |   | (      
-   | |   | )  \  || (___) |   | |   | (____/\
-   )_(   |/    )_)(_______)   )_(   (_______/
+                    _________ _        _______ _________ _______ 
+                    \__   __/( (    /|(  ___  )\__   __/(  ____ \
+                       ) (   |  \  ( || (   ) |   ) (   | (    \/
+                       | |   |   \ | || |   | |   | |   | (__    
+                       | |   | (\ \) || |   | |   | |   |  __)   
+                       | |   | | \   || |   | |   | |   | (      
+                       | |   | )  \  || (___) |   | |   | (____/\
+                       )_(   |/    )_)(_______)   )_(   (_______/
 ```
 
 A dead simple command line note taking app for you, built while learning [peewee (ORM)](https://github.com/coleifer/peewee)
@@ -19,7 +19,9 @@ A dead simple command line note taking app for you, built while learning [peewee
 
 Watch a live demo of it working here
 
-[![asciicast](https://asciinema.org/a/35224.png)](https://asciinema.org/a/35224)
+[![asciicast](https://asciinema.org/a/35224.png)](https://asciinema.org/a/35378)
+
+*Here's the [link to previous version](https://asciinema.org/a/35224) if you are interested!*
 
 ## Features
 
