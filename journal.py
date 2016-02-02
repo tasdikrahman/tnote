@@ -82,6 +82,12 @@ def view_entry(search_query=None, search_content=True):
         entries = entries.where(DiaryEntry.tags.contains(search_query))
 
     entries = list(entries)
+    if len(entries) == 0:
+        print("\nYour search had no results. Press enter to return to the main menu!")
+        input()
+        clear()
+        return
+
     index = 0
     size = len(entries)-1
     while 1:
@@ -130,6 +136,8 @@ def search_entries():
         print("c) Content")
         print("t) Tags")
         print("q) Return to the main menu")
+        print("===============================")
+        print("Action [c/t/q]: ", end="")
         query_selector = input("").lower()
         if query_selector == "t":
             view_entry(input("Enter a search Query: "), search_content=False)
