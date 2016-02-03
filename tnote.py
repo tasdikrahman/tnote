@@ -27,6 +27,7 @@ except NameError:
 
 path = os.getenv('HOME', os.path.expanduser('~')) + '/.tnote'
 db = SqliteDatabase(path + '/diary.db')
+finish_key = "ctrl+Z" if os.name == 'nt' else "ctrl+D"
 
 class DiaryEntry(Model):
 
@@ -89,7 +90,6 @@ def clear():
 
 def add_entry():
     """Adds an entry to the diary"""
-    finish_key = "ctrl+Z" if os.name == 'nt' else "ctrl+D"
     title_string = "Title (press %s when finished)" % finish_key
     # print(title_string)
     puts(colored.yellow(title_string))
@@ -104,6 +104,7 @@ def add_entry():
             puts(colored.yellow("\nEnter comma separated tags(if any!): (press %s when finished) : " % finish_key))
             puts(colored.green("="*(len(title_string)+33)))
             tags = sys.stdin.read().strip()
+            tags = processTags(tags)
             puts(colored.green("="*len(entry_string)))
             if input("\nSave entry (y/n) : ").lower() != 'n':  # anything other than 'n'
                 DiaryEntry.create(content=data, tags=tags, title=title)
@@ -150,9 +151,12 @@ def view_entry(search_query=None, search_content=True):
         puts(colored.yellow(entry.content))
         puts(colored.magenta(('\nTags:' + entry.tags) if entry.tags else '\nNo tags supplied'))
         puts(colored.green('\n\n'+'='*len(head)))
+        puts(colored.yellow("Viewing note " + str(index+1) + " of " + str(size+1)))
         print('n) next entry')
         print('p) previous entry')
         print('d) delete entry')
+        print('t) add tag(s)')
+        print('r) remove tag(s)')
         print('q) to return to main menu')
 
         next_action = input('Action: [n/p/q/d] : ').lower().strip()
@@ -170,7 +174,14 @@ def view_entry(search_query=None, search_content=True):
             index -= 1
             if(index < 0):
                 index = 0
-
+        elif next_action == 't':
+            puts(colored.yellow("\nEnter tag(s): (press %s when finished) : " % finish_key))
+            new_tag = sys.stdin.read().strip()
+            add_tag(entry, new_tag)
+        elif next_action == 'r':
+            puts(colored.yellow("\nEnter tag(s): (press %s when finished) : " % finish_key))
+            new_tag = sys.stdin.read().strip()
+            remove_tag(entry, new_tag)
 
 def search_entries():
     """Let's us search through the diary entries"""
@@ -205,6 +216,37 @@ def delete_entry(entry):
         entry.delete_instance()
         puts(colored.green("Entry was deleted!"))
 
+def processTags(tag):
+    """Cleans up tag string, removes duplicates, etc."""
+    tagList = tag.split(',')
+    newTagList = []
+    for tag in tagList:
+        newTagList.append(tag.strip()) 
+    return ','.join(list(set(newTagList)))
+
+def add_tag(entry, tag):
+    tagList = entry.tags.split(',')
+    newTagList = processTags(tag).split(',')
+    for tag in newTagList:
+        if(tagList.count(tag) == 0):
+            tagList.append(tag)
+            entry.tags = ",".join(tagList)
+            entry.save()
+        else:
+            puts(colored.red("Tag already present"))
+
+def remove_tag(entry, tag):
+    tagList = entry.tags.split(',')
+    newTagList = processTags(tag).split(',')
+    for tag in newTagList:
+        try:
+            tagList.remove(tag)
+            entry.tags = ','.join(tagList)
+            entry.save()
+            puts(colored.green("Tag deleted!"))
+        except ValueError:
+            puts(colored.red("No such tag in this entry!"))
+
 
 menu = OrderedDict([
     ('a', add_entry),
@@ -214,4 +256,8 @@ menu = OrderedDict([
 
 if __name__ == "__main__":
     initialize()
-    menu_loop()
+    try:
+        menu_loop()
+    except KeyboardInterrupt:
+        clear()
+        sys.exit(0)
