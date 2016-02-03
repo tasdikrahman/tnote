@@ -26,9 +26,21 @@ Watch a live demo of it working here
 ## Features
 
 - Dead simple to use. Even your granny would be able to use it. No seriously!
-- Written in uncomplicated python
-- Supports full text search for notes
+- Add your precious note with it's
+  - title 
+  - content
+  - tags 
+  Almost everything you need I guess(**pstt** you ask for feature requests [here](https://github.com/prodicus/tnote/issues))
+- Searching for notes is hassle free in `tnote`. It supports full text search for notes
+    - Search your notes either by it's
+      - content
+      - tags in it
+      Either way, you will always find what you want!
+- Ability to add and remove tags for each note.
 - Adds timestamp for each note which has been added.
+- Written in uncomplicated python.
+
+Need I say more?
 
 ## Installation
 
@@ -71,6 +83,7 @@ sqlite>
 
 #### To-do
     
+- [ ] Add **unit tests**. Like real quick!
 - [x] Add python2 support
 - [x] Add tags support for notes
 - [x] Add option to add title for notes
