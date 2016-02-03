@@ -1,1 +1,2 @@
 peewee==2.8.0
+pysqlcipher3==1.0.1

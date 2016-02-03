@@ -17,7 +17,7 @@ import datetime
 import os
 
 from peewee import *
-
+from playhouse.sqlcipher_ext import SqlCipherDatabase
 
 try:
     input = raw_input   # for python2 compatibility
@@ -25,7 +25,9 @@ except NameError:
     pass
 
 path = os.getenv('HOME', os.path.expanduser('~')) + '/.tnote'
-db = SqliteDatabase(path + '/diary.db')
+
+with open('cipher_key.txt', 'r') as cipher_file:
+    db = SqlCipherDatabase(path + '/diary.db', passphrase=cipher_file.read())
 
 class DiaryEntry(Model):
 
