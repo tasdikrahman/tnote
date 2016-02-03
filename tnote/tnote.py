@@ -106,7 +106,7 @@ def add_entry():
             puts(colored.green("="*(len(title_string)+33)))
             tags = sys.stdin.read().strip()
             tags = processTags(tags)
-            puts(colored.green("="*len(entry_string)))
+            puts(colored.green("\n"+"="*len(entry_string)))
             if input("\nSave entry (y/n) : ").lower() != 'n':  # anything other than 'n'
                 DiaryEntry.create(content=data, tags=tags, title=title)
                 puts(colored.green("Saved successfully"))
