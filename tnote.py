@@ -15,6 +15,7 @@ from collections import OrderedDict
 import sys
 import datetime
 import os
+import re
 
 from peewee import *
 from clint.textui import colored, puts
@@ -148,7 +149,13 @@ def view_entry(search_query=None, search_content=True):
         head = "\"{title}\" on \"{timestamp}\"".format(title=entry.title, timestamp=entry.timestamp)
         puts(colored.red(head))
         puts(colored.green('='*len(head)))
-        puts(colored.yellow(entry.content))
+        if search_query and search_content:
+            bits = re.compile("(%s)" % re.escape(search_query), re.IGNORECASE).split(entry.content)
+            line = reduce(lambda x,y : x+y, [colored.green(b) if b.lower() == search_query.lower() 
+                else colored.yellow(b) for b in bits])
+            puts(line)
+        else:
+            puts(colored.yellow(entry.content))
         puts(colored.magenta(('\nTags:' + entry.tags) if entry.tags else '\nNo tags supplied'))
         puts(colored.green('\n\n'+'='*len(head)))
         puts(colored.yellow("Viewing note " + str(index+1) + " of " + str(size+1)))
