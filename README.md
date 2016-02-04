@@ -19,9 +19,9 @@ A dead simple command line note taking app for you, built while learning [peewee
 
 Watch a live demo of it working here
 
-[![asciicast](https://asciinema.org/a/35378.png)](https://asciinema.org/a/35378)
+[![asciicast](https://asciinema.org/a/35557.png)](https://asciinema.org/a/35557)
 
-*Here's the [link to previous version](https://asciinema.org/a/35224) if you are interested!*
+*Here's the [link to previous version](https://asciinema.org/a/35378) if you are interested!*
 
 ## Features
 
