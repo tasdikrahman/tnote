@@ -6,8 +6,6 @@ import codecs
 import os
 import sys
 
-import tnote.tnote as tnote
-
 here = os.path.abspath(os.path.dirname(__file__))
 
 def read(*filenames, **kwargs):
@@ -34,7 +32,7 @@ class PyTest(TestCommand):
 
 setup(
     name='tnote',
-    version=tnote.__version__,
+    version='0.0.3',
     url='https://github.com/prodicus/tnote',
     license='MIT',
     author='prodicus',
