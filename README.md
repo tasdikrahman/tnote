@@ -1,6 +1,17 @@
 ## tnote
 
-[![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://img.shields.io/github/license/mashape/apistatus.svg) [![Supported python versions](https://img.shields.io/pypi/pyversions/Django.svg)]([![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)]()) [![Requirements Status](https://requires.io/github/prodicus/tnote/requirements.svg?branch=master)](https://requires.io/github/prodicus/tnote/requirements/?branch=master)
+[![GitHub license](https://img.shields.io/pypi/l/pyzipcode-cli.svg)](https://img.shields.io/pypi/l/pyzipcode-cli.svg) [![Supported python versions](https://img.shields.io/pypi/pyversions/Django.svg)]([![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)]()) [![Requirements Status](https://requires.io/github/prodicus/tnote/requirements.svg?branch=master)](https://requires.io/github/prodicus/tnote/requirements/?branch=master)
+
+```
+                            _________ _        _______ _________ _______ 
+                            \__   __/( (    /|(  ___  )\__   __/(  ____ \
+                               ) (   |  \  ( || (   ) |   ) (   | (    \/
+                               | |   |   \ | || |   | |   | |   | (__    
+                               | |   | (\ \) || |   | |   | |   |  __)   
+                               | |   | | \   || |   | |   | |   | (      
+                               | |   | )  \  || (___) |   | |   | (____/\
+                               )_(   |/    )_)(_______)   )_(   (_______/
+```
 
 A dead simple command line note taking app for you, built while learning [peewee (ORM)](https://github.com/coleifer/peewee)
 
@@ -8,14 +19,28 @@ A dead simple command line note taking app for you, built while learning [peewee
 
 Watch a live demo of it working here
 
-[![asciicast](https://asciinema.org/a/35224.png)](https://asciinema.org/a/35224)
+[![asciicast](https://asciinema.org/a/35378.png)](https://asciinema.org/a/35378)
+
+*Here's the [link to previous version](https://asciinema.org/a/35224) if you are interested!*
 
 ## Features
 
 - Dead simple to use. Even your granny would be able to use it. No seriously!
-- Written in uncomplicated python
-- Supports full text search for notes
+- Add your precious note with it's
+  - title 
+  - content
+  - tags 
+  Almost everything you need I guess(**pstt** you ask for feature requests [here](https://github.com/prodicus/tnote/issues))
+- Searching for notes is hassle free in `tnote`. It supports full text search for notes
+    - Search your notes either by it's
+      - content
+      - tags in it
+      Either way, you will always find what you want!
+- Ability to add and remove tags for each note.
 - Adds timestamp for each note which has been added.
+- Written in uncomplicated python.
+
+Need I say more?
 
 ## Installation
 
@@ -58,6 +83,8 @@ sqlite>
 
 #### To-do
     
+- [ ] Add **unit tests**. Like real quick!
+- [x] Add python2 support
 - [x] Add tags support for notes
 - [x] Add option to add title for notes
 - [x] Add option to search for notes using content
@@ -66,7 +93,7 @@ sqlite>
 - [ ] Add option to search for notes using timestamp
 - [ ] Make it pip installable
 - [ ] Encrypt the `.db` file using **Sqlcipher**
-- [ ] Add colorized text to the notes for improved UI
+- [x] Add colorized text to the notes for improved UI
 - [ ] Add better UI using **urwid**
 
 #### Contributers
