@@ -56,5 +56,3 @@ docs/_build/
 
 # PyBuilder
 target/
-
-cipher_key.txt
