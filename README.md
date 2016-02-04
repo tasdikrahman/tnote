@@ -31,6 +31,7 @@ Watch a live demo of it working here
   - content
   - tags 
   Almost everything you need I guess(**pstt** you ask for feature requests [here](https://github.com/prodicus/tnote/issues))
+- Encrypts your database using standard **AES encrytion**. So even if anybody gets hand of your database file. He cannot make any sense of the plaintext content in it!
 - Searching for notes is hassle free in `tnote`. It supports full text search for notes
     - Search your notes either by it's
       - content
