@@ -16,8 +16,10 @@ import sys
 import datetime
 import os
 
+import hashlib
 from peewee import *
 from playhouse.sqlcipher_ext import SqlCipherDatabase
+from Crypto.Cipher import AES
 
 try:
     input = raw_input   # for python2 compatibility
@@ -26,8 +28,16 @@ except NameError:
 
 path = os.getenv('HOME', os.path.expanduser('~')) + '/.tnote'
 
-with open('cipher_key.txt', 'r') as cipher_file:
-    db = SqlCipherDatabase(path + '/diary.db', passphrase=cipher_file.read())
+# Makes sure that the length of a string is a multiple of 32. Otherwise it is padded with the '^' character
+pad_string = lambda s: s + (32 - len(s) % 32) * '^'
+
+password = input('Please enter your key: ')
+key = hashlib.sha256(password.encode('utf-8')).digest()
+cryptor = AES.new(key)
+passphrase = input('Please enter your passphrase: ')
+crypted_pass = cryptor.encrypt(pad_string(passphrase))
+
+db = SqlCipherDatabase(path + '/diary.db', passphrase=str(crypted_pass))
 
 class DiaryEntry(Model):
 
@@ -49,8 +59,12 @@ def initialize():
 
     if not os.path.exists(path):
        os.makedirs(path)
-    db.connect()
-    db.create_tables([DiaryEntry], safe=True)
+    try:
+        db.connect()
+        db.create_tables([DiaryEntry], safe=True)
+    except DatabaseError:
+        print('Your key and/or passphrase were incorrect.\nPlease restart the application and try again!')
+        exit(0)
 
 
 def menu_loop():
