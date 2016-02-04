@@ -4,7 +4,7 @@
 # @Date:   2016-01-29
 # @Email:  prodicus@outlook.com  Github username: @prodicus
 # @Last Modified by:   tasdik
-# @Last Modified time: 2016-02-04
+# @Last Modified time: 2016-02-03
 # MIT License. You can find a copy of the License
 # @http://prodicus.mit-license.org
 
@@ -221,7 +221,7 @@ def processTags(tag):
     tagList = tag.split(',')
     newTagList = []
     for tag in tagList:
-        newTagList.append(tag.strip())
+        newTagList.append(tag.strip()) 
     return ','.join(list(set(newTagList)))
 
 def add_tag(entry, tag):
