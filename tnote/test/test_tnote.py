@@ -4,7 +4,9 @@ import os
 import json
 import datetime
 
-import tnote.tnote as tn
+import sys
+sys.path.append('./tnote/')
+import tnote as tn
 
 def setup():
 	"""TODO"""
