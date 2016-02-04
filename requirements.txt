@@ -1,5 +1,5 @@
 args==0.1.0
 clint==0.5.1
 peewee==2.8.0
-pysqlcipher3==1.0.1
+pysqlcipher3==1.0.2
 pycrypto==2.6.1

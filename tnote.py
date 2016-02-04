@@ -19,10 +19,11 @@ import os
 import hashlib
 from peewee import *
 
-from playhouse.sqlcipher_ext import SqlCipherDatabase
-from Crypto.Cipher import AES
 from clint.textui import colored, puts
 
+if os.name != 'nt':
+    from playhouse.sqlcipher_ext import SqlCipherDatabase
+    from Crypto.Cipher import AES
 
 try:
     input = raw_input   # for python2 compatibility
@@ -34,13 +35,16 @@ path = os.getenv('HOME', os.path.expanduser('~')) + '/.tnote'
 # Makes sure that the length of a string is a multiple of 32. Otherwise it is padded with the '^' character
 pad_string = lambda s: s + (32 - len(s) % 32) * '^'
 
-password = input('Please enter your key: ')
-key = hashlib.sha256(password.encode('utf-8')).digest()
-cryptor = AES.new(key)
-passphrase = input('Please enter your passphrase: ')
-crypted_pass = cryptor.encrypt(pad_string(passphrase))
+if os.name != 'nt':
+    password = input('Please enter your key: ')
+    key = hashlib.sha256(password.encode('utf-8')).digest()
+    cryptor = AES.new(key)
+    passphrase = input('Please enter your passphrase: ')
+    crypted_pass = cryptor.encrypt(pad_string(passphrase))
+    db = SqlCipherDatabase(path + '/diary.db', passphrase=str(crypted_pass))
+else:
+    db = SqliteDatabase(path + '/diary.db')
 
-db = SqlCipherDatabase(path + '/diary.db', passphrase=str(crypted_pass))
 finish_key = "ctrl+Z" if os.name == 'nt' else "ctrl+D"
 
 class DiaryEntry(Model):
