@@ -17,8 +17,10 @@ import datetime
 import os
 import re
 
+import render
+
 from peewee import *
-from clint.textui import colored, puts
+from clint.textui import puts, colored
 
 
 try:
@@ -61,23 +63,9 @@ def menu_loop():
     choice = None
     while choice != 'q':
         clear()
-        tnote_banner = r"""
-        _________ _        _______ _________ _______ 
-        \__   __/( (    /|(  ___  )\__   __/(  ____ \
-           ) (   |  \  ( || (   ) |   ) (   | (    \/
-           | |   |   \ | || |   | |   | |   | (__    
-           | |   | (\ \) || |   | |   | |   |  __)   
-           | |   | | \   || |   | |   | |   | (      
-           | |   | )  \  || (___) |   | |   | (____/\
-           )_(   |/    )_)(_______)   )_(   (_______/
-            
-                                        - By prodicus(@tasdikrahman)
-                                 
-        """
-        puts(colored.yellow(tnote_banner))
+        puts(render.banner())
         puts(colored.red("\nEnter 'q' to quit"))
-        for key, value in menu.items():
-            puts(colored.green('{}) {} : '.format(key, value.__doc__)))
+        puts(render.menu(menu.items()))
         choice = input('Action : ').lower().strip()
 
         if choice in menu:
@@ -140,34 +128,7 @@ def view_entry(search_query=None, search_content=True):
         entry = entries[index]
         timestamp = entry.timestamp.strftime("%A %B %d, %Y %I:%M%p ")
         clear()
-        """A: weekeday name
-        B: month name
-        D: day number
-        Y: year
-        I: hour(12hr clock)
-        M: minute
-        p: am or pm
-        """
-        head = "\"{title}\" on \"{timestamp}\"".format(title=entry.title, timestamp=entry.timestamp)
-        puts(colored.red(head))
-        puts(colored.green('='*len(head)))
-        if search_query and search_content:
-            bits = re.compile("(%s)" % re.escape(search_query), re.IGNORECASE).split(entry.content)
-            line = reduce(lambda x,y : x+y, [colored.green(b) if b.lower() == search_query.lower() 
-                else colored.yellow(b) for b in bits])
-            puts(line)
-        else:
-            puts(colored.yellow(entry.content))
-        puts(colored.magenta(('\nTags:' + entry.tags) if entry.tags else '\nNo tags supplied'))
-        puts(colored.green('\n\n'+'='*len(head)))
-        puts(colored.yellow("Viewing note " + str(index+1) + " of " + str(size+1)))
-        print('n) next entry')
-        print('p) previous entry')
-        print('d) delete entry')
-        print('t) add tag(s)')
-        print('r) remove tag(s)')
-        print('q) to return to main menu')
-
+        puts(render.entry(entry, index, size, search_query, search_content))
         next_action = input('Action: [n/p/q/d] : ').lower().strip()
         if next_action == 'q':
             break
