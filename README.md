@@ -92,7 +92,7 @@ sqlite>
 - [ ] Add option to search for notes using title
 - [ ] Add option to search for notes using timestamp
 - [ ] Make it pip installable
-- [ ] Encrypt the `.db` file using **Sqlcipher**
+- [x] Encrypt the `.db` file using **Sqlcipher**
 - [x] Add colorized text to the notes for improved UI
 - [ ] Add better UI using **urwid**
 
