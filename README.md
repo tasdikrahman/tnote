@@ -25,27 +25,14 @@ Watch a live demo of it working here
 
 ## Features
 
-- **Dead simple to use**. Even your granny would be able to use it. No seriously!
-- **Feature rich** 
-  - Add your precious note with it's
-    - title 
-    - content
-    - tags 
+- **Dead simple to use**: Even your granny would be able to use it. No seriously!
+- **Feature rich** Add your precious note with it's _title_ , _content_ , _tags_
+- **Secure**: Encrypts your database using standard **256 bit AES encryption**. So even if anybody gets hand of your database file. He cannot make any sense of it. [A little demo](https://github.com/prodicus/tnote/wiki/So-you-say-it-is-encrypted-eh%3F)
 
-  Almost everything you need I guess(**pstt** you ask for feature requests [here](https://github.com/prodicus/tnote/issues))
-- **Secure** 
-  - Encrypts your database using standard **256 bit AES encryption**. So even if anybody gets hand of your database file. He cannot make any sense of it. 
+**NOTE**
+  _This feature is available/tested only on linux based systems. Support for other OS's coming soon!_
 
-[Why Advantages of Encryption vs not using it?](https://github.com/prodicus/tnote/wiki/So-you-say-it-is-encrypted-eh%3F)
-
-  **This feature is available/tested only on linux based systems. Support for other OS's coming soon!** 
-- **Searching for notes is hassle free** in `tnote`. It supports full text search for notes
-  - Search your notes either by it's
-    - content
-    - tags in it
-
-      Either way, you will always find what you want!
-
+- **Searching for notes is hassle free** in `tnote`: It supports full text search for notes based on _content_, _tags_
     - The search query if found in the database will be highlighted if found. Looks pleasing to the eyes
 - Ability to add and remove tags for each note.
 - Adds timestamp for each note which has been added.
