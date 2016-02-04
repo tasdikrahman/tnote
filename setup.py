@@ -6,7 +6,7 @@ import codecs
 import os
 import sys
 
-import tnote
+import tnote.tnote as tnote
 
 here = os.path.abspath(os.path.dirname(__file__))
 

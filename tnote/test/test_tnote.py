@@ -4,16 +4,17 @@ import os
 import json
 import datetime
 
-import tnote
+import tnote.tnote as tn
 
-class TestTnoteBase(object):
-    """Base class for all sandman test classes."""
+def setup():
+	"""TODO"""
 
-    def setup_method(self, _):
-        """TODO"""
+def testProcessTags():
+	assert "a,b,cee,test tag" == tn.processTags("a,a, a , b , cee, test tag")
 
-    def teardown_method(self, _):
-        """TODO"""
+def cleanup():
+	"""TODO"""
 
-class TestTnoteStuff(TestTnoteBase):
-    """TODO"""
+setup()
+testProcessTags()
+cleanup()

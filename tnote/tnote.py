@@ -26,6 +26,7 @@ try:
 except NameError:
     pass
 
+__version__ = "0.0.2"
 path = os.getenv('HOME', os.path.expanduser('~')) + '/.tnote'
 db = SqliteDatabase(path + '/diary.db')
 finish_key = "ctrl+Z" if os.name == 'nt' else "ctrl+D"
@@ -82,6 +83,7 @@ def menu_loop():
         if choice in menu:
             clear()
             menu[choice]()
+    clear()
 
 
 def clear():
@@ -228,8 +230,9 @@ def processTags(tag):
     tagList = tag.split(',')
     newTagList = []
     for tag in tagList:
-        newTagList.append(tag.strip()) 
-    return ','.join(list(set(newTagList)))
+        if(len(tag)>0):
+            newTagList.append(tag.strip()) 
+    return ','.join(sorted(set(newTagList)))
 
 def add_tag(entry, tag):
     tagList = entry.tags.split(',')
