@@ -1,6 +1,7 @@
 ## tnote
 
 [![GitHub license](https://img.shields.io/pypi/l/pyzipcode-cli.svg)](https://img.shields.io/pypi/l/pyzipcode-cli.svg) [![Supported python versions](https://img.shields.io/pypi/pyversions/Django.svg)]([![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)]()) [![Requirements Status](https://requires.io/github/prodicus/tnote/requirements.svg?branch=master)](https://requires.io/github/prodicus/tnote/requirements/?branch=master)
+[![Build Status](https://travis-ci.org/maxwellgerber/tnote.svg?branch=master)](https://travis-ci.org/maxwellgerber/tnote)
 
 ```
                             _________ _        _______ _________ _______ 
