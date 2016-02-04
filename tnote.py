@@ -4,7 +4,7 @@
 # @Date:   2016-01-29
 # @Email:  prodicus@outlook.com  Github username: @prodicus
 # @Last Modified by:   tasdik
-# @Last Modified time: 2016-02-03
+# @Last Modified time: 2016-02-04
 # MIT License. You can find a copy of the License
 # @http://prodicus.mit-license.org
 
@@ -15,7 +15,6 @@ from collections import OrderedDict
 import sys
 import datetime
 import os
-import re
 
 from peewee import *
 from clint.textui import colored, puts
@@ -26,7 +25,6 @@ try:
 except NameError:
     pass
 
-__version__ = "0.0.2"
 path = os.getenv('HOME', os.path.expanduser('~')) + '/.tnote'
 db = SqliteDatabase(path + '/diary.db')
 finish_key = "ctrl+Z" if os.name == 'nt' else "ctrl+D"
@@ -83,7 +81,6 @@ def menu_loop():
         if choice in menu:
             clear()
             menu[choice]()
-    clear()
 
 
 def clear():
@@ -108,7 +105,7 @@ def add_entry():
             puts(colored.green("="*(len(title_string)+33)))
             tags = sys.stdin.read().strip()
             tags = processTags(tags)
-            puts(colored.green("\n"+"="*len(entry_string)))
+            puts(colored.green("="*len(entry_string)))
             if input("\nSave entry (y/n) : ").lower() != 'n':  # anything other than 'n'
                 DiaryEntry.create(content=data, tags=tags, title=title)
                 puts(colored.green("Saved successfully"))
@@ -151,13 +148,7 @@ def view_entry(search_query=None, search_content=True):
         head = "\"{title}\" on \"{timestamp}\"".format(title=entry.title, timestamp=entry.timestamp)
         puts(colored.red(head))
         puts(colored.green('='*len(head)))
-        if search_query and search_content:
-            bits = re.compile("(%s)" % re.escape(search_query), re.IGNORECASE).split(entry.content)
-            line = reduce(lambda x,y : x+y, [colored.green(b) if b.lower() == search_query.lower() 
-                else colored.yellow(b) for b in bits])
-            puts(line)
-        else:
-            puts(colored.yellow(entry.content))
+        puts(colored.yellow(entry.content))
         puts(colored.magenta(('\nTags:' + entry.tags) if entry.tags else '\nNo tags supplied'))
         puts(colored.green('\n\n'+'='*len(head)))
         puts(colored.yellow("Viewing note " + str(index+1) + " of " + str(size+1)))
@@ -230,9 +221,8 @@ def processTags(tag):
     tagList = tag.split(',')
     newTagList = []
     for tag in tagList:
-        if(len(tag)>0):
-            newTagList.append(tag.strip()) 
-    return ','.join(sorted(set(newTagList)))
+        newTagList.append(tag.strip())
+    return ','.join(list(set(newTagList)))
 
 def add_tag(entry, tag):
     tagList = entry.tags.split(',')
