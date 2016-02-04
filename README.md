@@ -1,6 +1,6 @@
 ## tnote
 
-[![GitHub license](https://img.shields.io/pypi/l/pyzipcode-cli.svg)](https://img.shields.io/pypi/l/pyzipcode-cli.svg) [![Supported python versions](https://img.shields.io/pypi/pyversions/Django.svg)]([![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)]()) [![Requirements Status](https://requires.io/github/prodicus/tnote/requirements.svg?branch=master)](https://requires.io/github/prodicus/tnote/requirements/?branch=master)
+[![GitHub license](https://img.shields.io/pypi/l/pyzipcode-cli.svg)](https://img.shields.io/pypi/l/pyzipcode-cli.svg) [![Supported python versions](https://img.shields.io/pypi/pyversions/Django.svg)]([![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)]()) [![Requirements Status](https://requires.io/github/prodicus/tnote/requirements.svg?branch=master)](https://requires.io/github/prodicus/tnote/requirements/?branch=master) [![Join the chat at https://gitter.im/prodicus/tnote](https://badges.gitter.im/prodicus/tnote.svg)](https://gitter.im/prodicus/tnote?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ```
                             _________ _        _______ _________ _______ 
@@ -50,7 +50,15 @@ Need I say more?
 
 Fire it up! :volcano:
 
-3) `$ ./journal.py`
+**NOTE** 
+
+On linux system, install `libsqlcipher-dev` 
+
+```sh
+$ sudo apt-get install libsqlcipher-dev
+```
+
+3) `$ ./tnote.py`
 
 ## Contributing
 
@@ -84,6 +92,7 @@ sqlite>
 #### To-do
     
 - [ ] Add **unit tests**. Like real quick!
+- [ ] Make it pip installable
 - [x] Add python2 support
 - [x] Add tags support for notes
 - [x] Add option to add title for notes
@@ -91,7 +100,6 @@ sqlite>
 - [x] Add option to search for notes using tags
 - [ ] Add option to search for notes using title
 - [ ] Add option to search for notes using timestamp
-- [ ] Make it pip installable
 - [x] Encrypt the `.db` file using **Sqlcipher**
 - [x] Add colorized text to the notes for improved UI
 - [ ] Add better UI using **urwid**
