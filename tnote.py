@@ -4,7 +4,7 @@
 # @Date:   2016-01-29
 # @Email:  prodicus@outlook.com  Github username: @prodicus
 # @Last Modified by:   tasdik
-# @Last Modified time: 2016-02-04
+# @Last Modified time: 2016-02-05
 # MIT License. You can find a copy of the License
 # @http://prodicus.mit-license.org
 
@@ -15,6 +15,11 @@ from collections import OrderedDict
 import sys
 import datetime
 import os
+import re
+import getpass
+from functools import reduce
+# python3 compatibily, as reduce was moved to functools on python3
+
 
 import hashlib
 from peewee import *
@@ -30,6 +35,7 @@ except NameError:
     pass
 
 
+__version__ = '0.0.2'
 path = os.getenv('HOME', os.path.expanduser('~')) + '/.tnote'
 
 # Makes sure that the length of a string is a multiple of 32. Otherwise it
@@ -37,10 +43,10 @@ path = os.getenv('HOME', os.path.expanduser('~')) + '/.tnote'
 pad_string = lambda s: s + (32 - len(s) % 32) * '^'
 
 if os.name != 'nt':
-    password = input('Please enter your key: ')
+    password = getpass.getpass("Please enter your key: ")
     key = hashlib.sha256(password.encode('utf-8')).digest()
     cryptor = AES.new(key)
-    passphrase = input('Please enter your passphrase: ')
+    passphrase = getpass.getpass("Please enter your passphrase: ")
     crypted_pass = cryptor.encrypt(pad_string(passphrase))
     db = SqlCipherDatabase(path + '/diary.db', passphrase=str(crypted_pass))
 else:
@@ -106,6 +112,7 @@ def menu_loop():
         if choice in menu:
             clear()
             menu[choice]()
+    clear()
 
 
 def clear():
@@ -132,7 +139,7 @@ def add_entry():
             puts(colored.green("="*(len(title_string)+33)))
             tags = sys.stdin.read().strip()
             tags = processTags(tags)
-            puts(colored.green("="*len(entry_string)))
+            puts(colored.green("\n"+"="*len(entry_string)))
             # anything other than 'n'
             if input("\nSave entry (y/n) : ").lower() != 'n':
                 DiaryEntry.create(content=data, tags=tags, title=title)
@@ -180,7 +187,15 @@ def view_entry(search_query=None, search_content=True):
             title=entry.title, timestamp=timestamp)
         puts(colored.red(head))
         puts(colored.green('='*len(head)))
-        puts(colored.yellow(entry.content))
+
+        if search_query and search_content:
+            bits = re.compile("(%s)" % re.escape(search_query), re.IGNORECASE).split(entry.content)
+            line = reduce(lambda x,y : x+y, [colored.cyan(b) if b.lower() == search_query.lower()
+                else colored.yellow(b) for b in bits])
+            puts(line)
+        else:
+            puts(colored.yellow(entry.content))
+
         puts(colored.magenta(
             ('\nTags:' + entry.tags) if entry.tags else '\nNo tags supplied'))
         puts(colored.green('\n\n'+'='*len(head)))
@@ -259,8 +274,9 @@ def processTags(tag):
     tagList = tag.split(',')
     newTagList = []
     for tag in tagList:
-        newTagList.append(tag.strip())
-    return ','.join(list(set(newTagList)))
+        if(len(tag)>0):
+            newTagList.append(tag.strip())
+    return ','.join(sorted(set(newTagList)))
 
 
 def add_tag(entry, tag):

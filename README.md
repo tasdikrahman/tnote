@@ -25,18 +25,33 @@ Watch a live demo of it working here
 
 ## Features
 
-- Dead simple to use. Even your granny would be able to use it. No seriously!
-- Add your precious note with it's
-  - title 
-  - content
-  - tags 
+- **Dead simple to use**. Even your granny would be able to use it. No seriously!
+- **Feature rich** 
+  - Add your precious note with it's
+    - title 
+    - content
+    - tags 
+
   Almost everything you need I guess(**pstt** you ask for feature requests [here](https://github.com/prodicus/tnote/issues))
-- Encrypts your database using standard **AES encrytion**. So even if anybody gets hand of your database file. He cannot make any sense of the plaintext content in it!
-- Searching for notes is hassle free in `tnote`. It supports full text search for notes
+- **Secure** 
+  - Encrypts your database using standard **256 bit AES encryption**. So even if anybody gets hand of your database file. He cannot make any sense of it. 
+
+For this SQLCipher was used, which is used by a large number of organizations, including Nasa, SalesForce, Xerox and more. 
+
+The passphrase used to encrypt the DB at the start will be the only passphrase that will be able to decrypt the database! 
+
+[Why Advantages of Encryption vs not using it?](https://github.com/prodicus/tnote/wiki/So-you-say-it-is-encrypted-eh%3F)
+
+  - key and passphrase approach used.
+  **This feature is available/tested only on linux based systems. Support for other OS's coming soon!** 
+- **Searching for notes is hassle free** in `tnote`. It supports full text search for notes
     - Search your notes either by it's
       - content
       - tags in it
+
       Either way, you will always find what you want!
+
+    - The search query if found in the database will be highlighted if found. Looks pleasing to the eyes
 - Ability to add and remove tags for each note.
 - Adds timestamp for each note which has been added.
 - Written in uncomplicated python.
@@ -65,31 +80,6 @@ $ sudo apt-get install libsqlcipher-dev
 
 This app was created in a timespan of 2 hours while learning to use peewee. So don't be shy to make some PR's here :smile:
 
-**NOTE**
-
-I am using **Sqlite** as the **db** and the **schema** of the database is like this
-
-```sql
-$ sqlite3 diary.db 
--- Loading resources from /home/tasdik/.sqliterc
-
-SQLite version 3.8.6 2014-08-15 11:46:33
-Enter ".help" for usage hints.
-sqlite> .schema
-CREATE TABLE "diaryentry" ("id" INTEGER NOT NULL PRIMARY KEY, "title" VARCHAR(255) NOT NULL, "content" TEXT NOT NULL, "timestamp" DATETIME NOT NULL, "tags" VARCHAR(255) NOT NULL);
-sqlite> .tables
-diaryentry
-sqlite> pragma table_info([diaryentry]);
-cid         name        type        notnull     dflt_value  pk        
-----------  ----------  ----------  ----------  ----------  ----------
-0           id          INTEGER     1                       1         
-1           title       VARCHAR(25  1                       0         
-2           content     TEXT        1                       0         
-3           timestamp   DATETIME    1                       0         
-4           tags        VARCHAR(25  1                       0 
-sqlite>
-```
-
 #### To-do
     
 - [ ] Add **unit tests**. Like real quick!
@@ -112,6 +102,10 @@ A big shout out to all the contributers, more specifically to these guys
 - [@maxwellgerber](https://github.com/maxwellgerber)
 - [@BrandtM](https://github.com/BrandtM)
 
+## Motivation
+
+Why not!
+
 ## Issues
 
 You can report the bugs at the [issue tracker](https://github.com/prodicus/tnote/issues)
@@ -122,6 +116,6 @@ You can [tweet me](https://twitter.com/tasdikrahman) if you can't get it to work
 
 ## License
 
-Built with ♥ by [Tasdik Rahman](http://tasdikrahman.me) under [MIT License](http://prodicus.mit-license.org)
+Built with ♥ and after a lot of pizzas by [Tasdik Rahman](http://tasdikrahman.me) under [MIT License](http://prodicus.mit-license.org)
 
 You can find a copy of the License at http://prodicus.mit-license.org/
