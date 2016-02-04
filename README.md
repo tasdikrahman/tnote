@@ -36,18 +36,13 @@ Watch a live demo of it working here
 - **Secure** 
   - Encrypts your database using standard **256 bit AES encryption**. So even if anybody gets hand of your database file. He cannot make any sense of it. 
 
-For this SQLCipher was used, which is used by a large number of organizations, including Nasa, SalesForce, Xerox and more. 
-
-The passphrase used to encrypt the DB at the start will be the only passphrase that will be able to decrypt the database! 
-
 [Why Advantages of Encryption vs not using it?](https://github.com/prodicus/tnote/wiki/So-you-say-it-is-encrypted-eh%3F)
 
-  - key and passphrase approach used.
   **This feature is available/tested only on linux based systems. Support for other OS's coming soon!** 
 - **Searching for notes is hassle free** in `tnote`. It supports full text search for notes
-    - Search your notes either by it's
-      - content
-      - tags in it
+  - Search your notes either by it's
+    - content
+    - tags in it
 
       Either way, you will always find what you want!
 

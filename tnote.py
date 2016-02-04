@@ -80,7 +80,8 @@ def initialize():
         db.create_tables([DiaryEntry], safe=True)
     except DatabaseError:
         print(
-            'Your key and/or passphrase were incorrect.\nPlease restart the application and try again!')
+            'Your key and/or passphrase were incorrect.\n \
+            Please restart the application and try again!')
         exit(0)
 
 
