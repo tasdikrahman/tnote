@@ -13,7 +13,7 @@
                                )_(   |/    )_)(_______)   )_(   (_______/
 ```
 
-A dead simple command line note taking app for you, built while learning [peewee (ORM)](https://github.com/coleifer/peewee)
+A dead simple command line note taking app built for you!
 
 ## Demo
 
@@ -60,15 +60,18 @@ $ sudo apt-get install libsqlcipher-dev
 
 ## Contributing
 
-This app was created in a timespan of 2 hours while learning to use peewee. So don't be shy to make some PR's here :smile:
+This app was created in a timespan of 2 hours while learning to use [peewee (ORM)](https://github.com/coleifer/peewee). So don't be shy to make some PR's here :smile:
 
 #### To-do
     
 - [ ] Add **unit tests**. Like real quick!
 - [ ] Make it pip installable
+- [ ] Ability to edit the content of a note
 - [x] Add python2 support
 - [x] Add tags support for notes
+- [x] Remove tahs for notes
 - [x] Add option to add title for notes
+- [] Add option to remove title for notes
 - [x] Add option to search for notes using content
 - [x] Add option to search for notes using tags
 - [ ] Add option to search for notes using title
