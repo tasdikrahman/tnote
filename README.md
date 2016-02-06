@@ -71,7 +71,7 @@ This app was created in a timespan of 2 hours while learning to use [peewee (ORM
 - [x] Add tags support for notes
 - [x] Remove tahs for notes
 - [x] Add option to add title for notes
-- [] Add option to remove title for notes
+- [ ] Add option to remove title for notes
 - [x] Add option to search for notes using content
 - [x] Add option to search for notes using tags
 - [ ] Add option to search for notes using title
