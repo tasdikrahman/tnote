@@ -27,7 +27,7 @@ Watch a live demo of it working here
 
 - **Dead simple to use**: Even your granny would be able to use it. No seriously!
 - **Feature rich** Add your precious note with it's _title_ , _content_ , _tags_
-- **Secure**: Encrypts your database using standard **256 bit AES encryption**. So even if anybody gets hand of your database file. He cannot make any sense of it. [A little demo](https://github.com/prodicus/tnote/wiki/So-you-say-it-is-encrypted-eh%3F)
+- **Secure**: Encrypts your database using standard **AES-256 in CBC mode**. So even if anybody gets hand of your database file. He cannot make any sense of it. [A little demo of what I am doing using it](https://github.com/prodicus/tnote/wiki/So-you-say-it-is-encrypted-eh%3F)
 
 **NOTE**
   _This feature is available/tested only on linux based systems. Support for other OS's coming soon!_
@@ -42,21 +42,41 @@ Need I say more?
 
 ## Installation
 
-1) `$ git clone https://github.com/prodicus/tnote`
+- 
 
-2) `$ cd tnote && pip install -r requirements.txt`
+```sh
+$ git clone https://github.com/prodicus/tnote
+$ cd tnote && pip install -r requirements.txt
+```
 
-Fire it up! :volcano:
+- 
 
 **NOTE** 
 
-On linux system, install `libsqlcipher-dev` 
+On **linux** system, install `libsqlcipher-dev` 
 
 ```sh
 $ sudo apt-get install libsqlcipher-dev
 ```
 
-3) `$ ./tnote.py`
+On **Mac OS** systems, you can install it by 
+
+```sh
+$ brew install sqlcipher
+```
+
+- Fire it up! :volcano:
+
+`$ ./tnote.py`
+
+
+## Operating system support
+
+| OS | Support status |
+| --- | --- |
+| Linux | :white_check_mark: Full support |
+| OS X | :white_check_mark: Full support  |
+| Windows | :ballot_box_with_check: encrytion of the Database for windows not yet supported |
 
 ## Contributing
 
@@ -71,7 +91,7 @@ This app was created in a timespan of 2 hours while learning to use [peewee (ORM
 - [x] Add tags support for notes
 - [x] Remove tahs for notes
 - [x] Add option to add title for notes
-- [ ] Add option to remove title for notes
+- [] Add option to remove title for notes
 - [x] Add option to search for notes using content
 - [x] Add option to search for notes using tags
 - [ ] Add option to search for notes using title
