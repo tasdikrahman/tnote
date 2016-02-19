@@ -32,6 +32,7 @@ Watch a live demo of it working here
 **NOTE**
   _This feature is available/tested only on linux based systems. Support for other OS's coming soon!_
 
+- **Text Highlighting is cross platform** - Supports Linux, Windows, MAC for the terminal based highlighting.
 - **Searching for notes is hassle free** in `tnote`: It supports full text search for notes based on _content_, _tags_
     - The search query if found in the database will be highlighted if found. Looks pleasing to the eyes
 - Ability to add and remove tags for each note.
