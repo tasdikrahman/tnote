@@ -86,15 +86,17 @@ $ git clone https://github.com/prodicus/tnote
 $ cd tnote && pip install -r requirements.txt
 ```
 
-**Add a symbolic link to it **
+*Add a symbolic link to it*
 
 ```sh
 $ chmod +x tnote
 $ cd ~/bin/ 
-$ ln -s ~/ln -s ~/some/path/to/tnote
+$ ln -s ~/some/path/to/tnote
 ```
 
-Replace `~/some/path/to/tnote` by the path where you have cloned the repo.
+Replace `~/some/path/to/tnote` by the path where you have cloned the repo. For example if you have cloned it to `~/Downloads/tnote` folder than your command should look something like
+
+`$ ln -s ~/Downloads/tnote/tnote`
 
 #### Run it
 
