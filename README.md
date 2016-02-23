@@ -43,10 +43,7 @@ Need I say more?
 
 ## Installation
 
-```sh
-$ git clone https://github.com/prodicus/tnote
-$ cd tnote && pip install -r requirements.txt
-```
+### Installing dependencies
 
 **NOTE** 
 
@@ -62,10 +59,27 @@ On **Mac OS** systems, you can install it by
 $ brew install sqlcipher
 ```
 
-Fire it up! :volcano:
+### Clone it
 
-`$ ./tnote.py`
 
+```sh
+$ git clone https://github.com/prodicus/tnote
+$ cd tnote && pip install -r requirements.txt
+```
+
+### Make a symbolic link to `tnote`
+
+```sh
+$ chmod +x tnote
+$ cd ~/bin/ 
+$ ln -s ~/ln -s ~/some/path/to/tnote
+```
+
+Replace `~/some/path/to/tnote` by the path where you have cloned the repo.
+
+### Fire it up! :volcano:
+
+`$ tnote`
 
 ## Operating system support
 
