@@ -15,6 +15,21 @@
 
 A dead simple command line note taking app built for you!
 
+## Index
+
+- [Demo](#demo)
+- [Features](#features)
+- [Installation](#installation)
+  - [Installing dependencies](#installing-dependencies)
+  - [Clone it](#clone-it)
+  - [Run it](#run-it)
+- [Supported platforms](#supported-platforms)
+- [Contributing](#contributing)
+  - [To-do](#to-do)
+  - [Contributers](#contributers)
+- [Issues](#issues)
+- [License](#license)
+
 ## Demo
 
 Watch a live demo of it working here
@@ -22,6 +37,8 @@ Watch a live demo of it working here
 [![asciicast](https://asciinema.org/a/35557.png)](https://asciinema.org/a/35557)
 
 *Here's the [link to previous version](https://asciinema.org/a/35378) if you are interested!*
+
+***
 
 ## Features
 
@@ -41,9 +58,11 @@ Watch a live demo of it working here
 
 Need I say more?
 
+***
+
 ## Installation
 
-### Installing dependencies
+#### Installing dependencies
 
 **NOTE** 
 
@@ -59,7 +78,7 @@ On **Mac OS** systems, you can install it by
 $ brew install sqlcipher
 ```
 
-### Clone it
+#### Clone it
 
 
 ```sh
@@ -67,7 +86,7 @@ $ git clone https://github.com/prodicus/tnote
 $ cd tnote && pip install -r requirements.txt
 ```
 
-### Make a symbolic link to `tnote`
+**Add a symbolic link to it **
 
 ```sh
 $ chmod +x tnote
@@ -77,17 +96,23 @@ $ ln -s ~/ln -s ~/some/path/to/tnote
 
 Replace `~/some/path/to/tnote` by the path where you have cloned the repo.
 
-### Fire it up! :volcano:
+#### Run it
+
+Fire it up! :volcano:
 
 `$ tnote`
 
-## Operating system support
+***
+
+## Supported platforms
 
 | OS | Support status |
 | --- | --- |
 | Linux | :white_check_mark: Full support |
 | OS X | :white_check_mark: Full support  |
 | Windows | :ballot_box_with_check: encrytion of the Database for windows not yet supported |
+
+***
 
 ## Contributing
 
@@ -122,6 +147,8 @@ A big shout out to all the contributers, more specifically to these guys
 
 Why not!
 
+***
+
 ## Issues
 
 You can report the bugs at the [issue tracker](https://github.com/prodicus/tnote/issues)
@@ -129,6 +156,8 @@ You can report the bugs at the [issue tracker](https://github.com/prodicus/tnote
 **OR**
 
 You can [tweet me](https://twitter.com/tasdikrahman) if you can't get it to work. In fact, you should tweet me anyway.
+
+***
 
 ## License
 
