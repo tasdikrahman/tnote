@@ -123,20 +123,20 @@ def clear():
 
 def add_entry():
     """Adds an entry to the diary"""
-    title_string = "Title (press %s when finished)" % finish_key
+    title_string = "Title (press %s when finished)".format(finish_key)
     # print(title_string)
     puts(colored.yellow(title_string))
     puts(colored.green("="*len(title_string)))
     title = sys.stdin.read().strip()
     if title:
-        entry_string = "\nEnter your entry: (press %s when finished)" % finish_key
+        entry_string = "\nEnter your entry: (press {} when finished)".format(finish_key)
         puts(colored.yellow(entry_string))
         puts(colored.green("="*len(entry_string)))
         # reads all the data entered from the user
         data = sys.stdin.read().strip()
         if data:    # if something was actually entered
             puts(colored.yellow(
-                "\nEnter comma separated tags(if any!): (press %s when finished) : " % finish_key))
+                "\nEnter comma separated tags(if any!): (press {} when finished) : ".format(finish_key))
             puts(colored.green("="*(len(title_string)+33)))
             tags = sys.stdin.read().strip()
             tags = processTags(tags)
@@ -163,7 +163,7 @@ def view_entry(search_query=None, search_content=True):
         entries = entries.where(DiaryEntry.tags.contains(search_query))
 
     entries = list(entries)
-    if len(entries) == 0:
+    if entries:
         puts(colored.red(
             "\nYour search had no results. Press enter to return to the main menu!"))
         input()
@@ -198,7 +198,7 @@ def view_entry(search_query=None, search_content=True):
             puts(colored.yellow(entry.content))
 
         puts(colored.magenta(
-            ('\nTags:' + entry.tags) if entry.tags else '\nNo tags supplied'))
+            ('\nTags: {}'.format(entry.tags)) if entry.tags else '\nNo tags supplied'))
         puts(colored.green('\n\n'+'='*len(head)))
         puts(
             colored.yellow("Viewing note " + str(index+1) + " of " + str(size+1)))
@@ -217,13 +217,9 @@ def view_entry(search_query=None, search_content=True):
             size -= 1
             return
         elif next_action == 'n':
-            index += 1
-            if(index > size):
-                index = size
+            index = index+=1 if (index + 1) <= size else index = size
         elif next_action == 'p':
-            index -= 1
-            if(index < 0):
-                index = 0
+            index = index-=1 if index <= 0 else index = 0
         elif next_action == 't':
             puts(
                 colored.yellow("\nEnter tag(s): (press %s when finished) : " % finish_key))
@@ -264,6 +260,7 @@ def delete_entry(entry):
     """deletes a diary entry"""
     # It makes the most sense to me to delete the entry while I am
     # reading it in from the 'view_entry' method so here it is
+    
     puts(colored.red("Are you sure (y/n) : "))
     if input().lower().strip() == 'y':
         entry.delete_instance()
@@ -273,10 +270,7 @@ def delete_entry(entry):
 def processTags(tag):
     """Cleans up tag string, removes duplicates, etc."""
     tagList = tag.split(',')
-    newTagList = []
-    for tag in tagList:
-        if(len(tag)>0):
-            newTagList.append(tag.strip())
+    newTagList = [tag.strip() for tag in tagList if tag]
     return ','.join(sorted(set(newTagList)))
 
 
