@@ -31,6 +31,7 @@ A dead simple command line note taking app built for you!
 - [License](#license)
 
 ## Demo
+[:arrow_up: Back to top](#index)
 
 Watch a live demo of it working here
 
@@ -41,6 +42,7 @@ Watch a live demo of it working here
 ***
 
 ## Features
+[:arrow_up: Back to top](#index)
 
 - **Dead simple to use**: Even your granny would be able to use it. No seriously!
 - **Feature rich** Add your precious note with it's _title_ , _content_ , _tags_
@@ -61,6 +63,7 @@ Need I say more?
 ***
 
 ## Installation
+[:arrow_up: Back to top](#index)
 
 #### Installing dependencies
 
@@ -107,6 +110,7 @@ Fire it up! :volcano:
 ***
 
 ## Supported platforms
+[:arrow_up: Back to top](#index)
 
 | OS | Support status |
 | --- | --- |
@@ -117,6 +121,7 @@ Fire it up! :volcano:
 ***
 
 ## Contributing
+[:arrow_up: Back to top](#index)
 
 This app was created in a timespan of 2 hours while learning to use [peewee (ORM)](https://github.com/coleifer/peewee). So don't be shy to make some PR's here :smile:
 
@@ -146,12 +151,14 @@ A big shout out to all the contributers, more specifically to these guys
 - [@BrandtM](https://github.com/BrandtM)
 
 ## Motivation
+[:arrow_up: Back to top](#index)
 
-Why not!
+Why not! Cheers to a crazy weekend :smile:
 
 ***
 
 ## Issues
+[:arrow_up: Back to top](#index)
 
 You can report the bugs at the [issue tracker](https://github.com/prodicus/tnote/issues)
 
@@ -162,6 +169,7 @@ You can [tweet me](https://twitter.com/tasdikrahman) if you can't get it to work
 ***
 
 ## License
+[:arrow_up: Back to top](#index)
 
 Built with ♥ and after a lot of pizzas by [Tasdik Rahman](http://tasdikrahman.me) under [MIT License](http://prodicus.mit-license.org)
 
