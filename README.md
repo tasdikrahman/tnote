@@ -15,6 +15,14 @@
 
 A dead simple command line note taking app built for you!
 
+If you have found my little bits of software of any use to you, you can help me pay my internet bills :)
+
+<p align="center">
+<a href="https://www.paypal.me/tasdikrahman" target="_blank"><img src="https://tuxtricks.files.wordpress.com/2016/12/donate.png" alt="Donate via PayPal!" title="Donate via PayPal!" /></a>
+</p>
+
+Some of my projects are also on [gratipay](https://gratipay.com/~prodicus/)
+
 ## Index
 
 - [Demo](#demo)
