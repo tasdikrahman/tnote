@@ -135,8 +135,7 @@ def add_entry():
         # reads all the data entered from the user
         data = sys.stdin.read().strip()
         if data:    # if something was actually entered
-            puts(colored.yellow(
-                "\nEnter comma separated tags(if any!): (press {} when finished) : ".format(finish_key))
+            puts(colored.yellow("\nEnter comma separated tags(if any!): (press {} when finished) : ".format(finish_key)))
             puts(colored.green("="*(len(title_string)+33)))
             tags = sys.stdin.read().strip()
             tags = processTags(tags)
@@ -217,9 +216,15 @@ def view_entry(search_query=None, search_content=True):
             size -= 1
             return
         elif next_action == 'n':
-            index = index+=1 if (index + 1) <= size else index = size
+            if (index + 1) <= size:
+                index += 1
+            else: 
+                index = size
         elif next_action == 'p':
-            index = index-=1 if index <= 0 else index = 0
+            if index <= 0:
+                index -= 1
+            else: 
+                index = 0
         elif next_action == 't':
             puts(
                 colored.yellow("\nEnter tag(s): (press %s when finished) : " % finish_key))
