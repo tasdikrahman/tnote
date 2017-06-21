@@ -15,20 +15,6 @@
 
 A dead simple command line note taking app built for you!
 
-If you have found my little bits of software of any use to you, you can help me pay my internet bills :)
-
-<p align="center">
-<a href="https://www.paypal.me/tasdikrahman" target="_blank"><img src="https://tuxtricks.files.wordpress.com/2016/12/donate.png" alt="Donate via PayPal!" title="Donate via PayPal!" /></a>
-</p>
-
-If you are from the Indian subcontinent.
-
-<p align="center">
-<a href="https://www.instamojo.com/@tasdikrahman" target="_blank"><img src="https://www.instamojo.com/blog/wp-content/uploads/2017/01/instamojo-91.png" alt="Donate via instamojo" title="Donate via instamojo" /></a>
-</p>
-
-Some of my projects are also on [gratipay](https://gratipay.com/~prodicus/)
-
 ## Index
 
 - [Demo](#demo)
@@ -43,6 +29,7 @@ Some of my projects are also on [gratipay](https://gratipay.com/~prodicus/)
   - [Contributers](#contributers)
 - [Issues](#issues)
 - [License](#license)
+- [Donation](#donation)
 
 ## Demo
 [:arrow_up: Back to top](#index)
@@ -188,3 +175,13 @@ You can [tweet me](https://twitter.com/tasdikrahman) if you can't get it to work
 Built with ♥ and after a lot of pizzas by [Tasdik Rahman](http://tasdikrahman.me) under [MIT License](http://prodicus.mit-license.org)
 
 You can find a copy of the License at http://prodicus.mit-license.org/
+
+## Donation
+[:arrow_up: Back to top](#index)
+
+If you have found my little bits of software being of any use to you, do consider helping me pay my internet bills :)
+
+| £ (GBP) | <a href="https://transferwise.com/pay/d804d854-6862-4127-afdd-4687d64cbd28" target="_blank"><img src="http://i.imgur.com/ARJfowA.png" alt="Donate via TransferWise!" title="Donate via TransferWise!" /></a> |
+|:-------------------------------------------:|:-------------------------------------------------------------:|
+| € Euros | <a href="https://transferwise.com/pay/64c586e3-ec99-4be8-af0b-59241f7b9b79" target="_blank"><img src="http://i.imgur.com/ARJfowA.png" alt="Donate via TransferWise!" title="Donate via TransferWise!" /></a> |
+| ₹ (INR)  | <a href="https://www.instamojo.com/@tasdikrahman" target="_blank"><img src="https://www.instamojo.com/blog/wp-content/uploads/2017/01/instamojo-91.png" alt="Donate via instamojo" title="Donate via instamojo" /></a> | 
