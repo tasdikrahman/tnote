@@ -1,6 +1,6 @@
 ## tnote
 
-[![GitHub license](https://img.shields.io/pypi/l/pyzipcode-cli.svg)](https://img.shields.io/pypi/l/pyzipcode-cli.svg) [![Supported python versions](https://img.shields.io/pypi/pyversions/Django.svg)]([![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)]()) [![Requirements Status](https://requires.io/github/prodicus/tnote/requirements.svg?branch=master)](https://requires.io/github/prodicus/tnote/requirements/?branch=master) [![Join the chat at https://gitter.im/prodicus/tnote](https://badges.gitter.im/prodicus/tnote.svg)](https://gitter.im/prodicus/tnote?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![GitHub license](https://img.shields.io/pypi/l/pyzipcode-cli.svg)](https://img.shields.io/pypi/l/pyzipcode-cli.svg) [![Supported python versions](https://img.shields.io/pypi/pyversions/Django.svg)]([![PyPI](https://img.shields.io/pypi/pyversions/Django.svg)]()) [![Join the chat at https://gitter.im/prodicus/tnote](https://badges.gitter.im/prodicus/tnote.svg)](https://gitter.im/prodicus/tnote?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ```
                             _________ _        _______ _________ _______ 
@@ -47,7 +47,7 @@ Watch a live demo of it working here
 
 - **Dead simple to use**: Even your granny would be able to use it. No seriously!
 - **Feature rich** Add your precious note with it's _title_ , _content_ , _tags_
-- **Secure**: Encrypts your database using standard **AES-256 in CBC mode**. So even if anybody gets hand of your database file. He cannot make any sense of it. [A little demo of what I am doing using it](https://github.com/prodicus/tnote/wiki/So-you-say-it-is-encrypted-eh%3F)
+- **Secure**: Encrypts your database using standard **AES-256 in CBC mode**. So even if anybody gets hand of your database file. He cannot make any sense of it. [A little demo of what I am doing using it](https://github.com/tasdikrahman/tnote/wiki/So-you-say-it-is-encrypted-eh%3F)
 
 **NOTE**
   _This feature is available/tested only on linux based systems. Support for other OS's coming soon!_
@@ -86,7 +86,7 @@ $ brew install sqlcipher
 
 
 ```sh
-$ git clone https://github.com/prodicus/tnote
+$ git clone https://github.com/tasdikrahman/tnote
 $ cd tnote && pip install -r requirements.txt
 ```
 
@@ -161,7 +161,7 @@ Why not! Cheers to a crazy weekend :smile:
 ## Issues
 [:arrow_up: Back to top](#index)
 
-You can report the bugs at the [issue tracker](https://github.com/prodicus/tnote/issues)
+You can report the bugs at the [issue tracker](https://github.com/tasdikrahman/tnote/issues)
 
 **OR**
 

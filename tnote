@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Author: tasdik
 # @Date:   2016-01-29
-# @Email:  prodicus@outlook.com  Github username: @prodicus
+# @Email:  prodicus@outlook.com  Github username: @tasdikrahman
 # @Last Modified by:   tasdik
 # @Last Modified time: 2016-02-05
 # MIT License. You can find a copy of the License
@@ -101,7 +101,7 @@ def menu_loop():
            | |   | )  \  || (___) |   | |   | (____/\
            )_(   |/    )_)(_______)   )_(   (_______/
             
-                                        - By prodicus(@tasdikrahman)
+                                        - By tasdikrahman(@tasdikrahman)
                                  
         """
         puts(colored.yellow(tnote_banner))
