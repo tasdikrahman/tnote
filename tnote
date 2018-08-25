@@ -123,7 +123,7 @@ def clear():
 
 def add_entry():
     """Adds an entry to the diary"""
-    title_string = "Title (press %s when finished)".format(finish_key)
+    title_string = "Title (press {} when finished)".format(finish_key)
     # print(title_string)
     puts(colored.yellow(title_string))
     puts(colored.green("="*len(title_string)))
