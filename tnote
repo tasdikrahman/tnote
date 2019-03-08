@@ -123,7 +123,7 @@ def clear():
 
 def add_entry():
     """Adds an entry to the diary"""
-    title_string = "Title (press %s when finished)".format(finish_key)
+    title_string = "Title (press {} when finished)".format(finish_key)
     # print(title_string)
     puts(colored.yellow(title_string))
     puts(colored.green("="*len(title_string)))
@@ -162,7 +162,7 @@ def view_entry(search_query=None, search_content=True):
         entries = entries.where(DiaryEntry.tags.contains(search_query))
 
     entries = list(entries)
-    if entries:
+    if not entries:
         puts(colored.red(
             "\nYour search had no results. Press enter to return to the main menu!"))
         input()
