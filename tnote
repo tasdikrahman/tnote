@@ -303,11 +303,28 @@ def remove_tag(entry, tag):
         except ValueError:
             puts(colored.red("No such tag in this entry!"))
 
+def every_entry():
+    '''See every entry'''
+    while 1:
+        puts(colored.red("every entery"))
+        entries = DiaryEntry.select().order_by(DiaryEntry.timestamp.desc())
+        for i in entries:
+            head = "\"{title}\" on \"{timestamp}\"".format(title=i.title, timestamp=i.timestamp.strftime("%A %B %d, %Y %I:%M%p "))
+            puts(colored.red(head))
+            puts(colored.green('='*len(head)))
+            puts(colored.yellow(i.content))
+            puts(colored.green(" - - END OF ENTRY - - "))
+
+        query_selector = input(colored.cyan("Enter 'q' to go back to main menu: ")).lower()
+        if query_selector == "q":
+            break
+
 
 menu = OrderedDict([
     ('a', add_entry),
     ('v', view_entry),
-    ('s', search_entries)
+    ('s', search_entries),
+    ('e', every_entry)
 ])
 
 if __name__ == "__main__":
