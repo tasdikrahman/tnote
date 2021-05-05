@@ -36,8 +36,13 @@ except NameError:
 
 
 __version__ = '0.0.2'
-path = os.getenv('HOME', os.path.expanduser('~')) + '/.tnote'
+if os.getenv('XDG_CONFIG_HOME') == None or len(os.getenv('XDG_CONFIG_HOME')) == 0:
+    path = os.getenv('HOME', os.path.expanduser('~')) + '/.tnote'
+else:
+    path = os.getenv('XDG_CONFIG_HOME') + 'tnote'
 
+
+#
 # Makes sure that the length of a string is a multiple of 32. Otherwise it
 # is padded with the '^' character
 pad_string = lambda s: s + (32 - len(s) % 32) * '^'
@@ -92,17 +97,17 @@ def menu_loop():
     while choice != 'q':
         clear()
         tnote_banner = r"""
-        _________ _        _______ _________ _______ 
+        _________ _        _______ _________ _______
         \__   __/( (    /|(  ___  )\__   __/(  ____ \
            ) (   |  \  ( || (   ) |   ) (   | (    \/
-           | |   |   \ | || |   | |   | |   | (__    
-           | |   | (\ \) || |   | |   | |   |  __)   
-           | |   | | \   || |   | |   | |   | (      
+           | |   |   \ | || |   | |   | |   | (__
+           | |   | (\ \) || |   | |   | |   |  __)
+           | |   | | \   || |   | |   | |   | (
            | |   | )  \  || (___) |   | |   | (____/\
            )_(   |/    )_)(_______)   )_(   (_______/
-            
+
                                         - By tasdikrahman(@tasdikrahman)
-                                 
+
         """
         puts(colored.yellow(tnote_banner))
         puts(colored.red("\nEnter 'q' to quit"))
@@ -218,12 +223,12 @@ def view_entry(search_query=None, search_content=True):
         elif next_action == 'n':
             if (index + 1) <= size:
                 index += 1
-            else: 
+            else:
                 index = size
         elif next_action == 'p':
             if index <= 0:
                 index -= 1
-            else: 
+            else:
                 index = 0
         elif next_action == 't':
             puts(
@@ -265,7 +270,7 @@ def delete_entry(entry):
     """deletes a diary entry"""
     # It makes the most sense to me to delete the entry while I am
     # reading it in from the 'view_entry' method so here it is
-    
+
     puts(colored.red("Are you sure (y/n) : "))
     if input().lower().strip() == 'y':
         entry.delete_instance()
