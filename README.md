@@ -52,7 +52,7 @@ Watch a live demo of it working here
 **NOTE**
   _This feature is available/tested only on linux based systems. Support for other OS's coming soon!_
 
-- **Text Highlighting is cross platform** - Supports Linux, Windows, MAC for the terminal based highlighting.
+- **Text Highlighting is cross platform** - Supports Linux, Windows and Mac for the terminal based highlighting.
 - **Searching for notes is hassle free** in `tnote`: It supports full text search for notes based on _content_, _tags_
     - The search query if found in the database will be highlighted if found. Looks pleasing to the eyes
 - Ability to add and remove tags for each note.
@@ -70,13 +70,13 @@ Need I say more?
 
 **NOTE** 
 
-On **linux** system, install `libsqlcipher-dev` 
+On **Linux**, install `libsqlcipher-dev` 
 
 ```sh
 $ sudo apt-get install libsqlcipher-dev
 ```
 
-On **Mac OS** systems, you can install it by 
+On **Mac OS**, you can install it by 
 
 ```sh
 $ brew install sqlcipher
@@ -86,7 +86,7 @@ $ brew install sqlcipher
 
 
 ```sh
-$ git clone https://github.com/tasdikrahman/tnote
+$ git clone https://github.com/tasdikrahman/tnote.git
 $ cd tnote && pip install -r requirements.txt
 ```
 
@@ -116,7 +116,7 @@ Fire it up! :volcano:
 | OS | Support status |
 | --- | --- |
 | Linux | :white_check_mark: Full support |
-| OS X | :white_check_mark: Full support  |
+| Mac OS | :white_check_mark: Full support  |
 | Windows | :ballot_box_with_check: encrytion of the Database for windows not yet supported |
 
 ***
