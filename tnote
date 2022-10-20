@@ -238,7 +238,7 @@ def view_entry(search_query=None, search_content=True):
 
 
 def search_entries():
-    """Let's us search through the diary entries"""
+    """Let us search through the diary entries"""
     while 1:
         clear()
         print("What do you want to search for?")
